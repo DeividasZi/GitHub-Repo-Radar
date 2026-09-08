@@ -12,18 +12,19 @@ Live stats — Stars, forks, open issues, last push date, primary language
 Side-by-side comparison — See all your repos in a grid layout
 Token support — Optional GitHub token for higher rate limits (60/hour without, 5000/hour with)
 Zero dependencies — Just HTML, CSS, and vanilla JS. No build step, no npm, no frameworks.
+
 Usage
 Download repo-radar.html
 Open it in any browser
 Add repos or load all from a user
 Done
+
 Adding Repos
 Individual repo:
-
 Enter username/repo-name (e.g., torvalds/linux)
 Click "Add"
-All public repos from a user:
 
+All public repos from a user:
 Enter a GitHub username
 Click "Load All"
 GitHub Token (Optional)
