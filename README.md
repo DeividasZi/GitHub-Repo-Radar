@@ -49,3 +49,5 @@ IBM Plex Sans / Space Grotesk fonts
 Zero build tools
 License
 MIT (or whatever you want — it's a single file, do what you want with it)
+
+Streamlit - https://mrtpwqxed7zsipsyhwmwcd.streamlit.app/
