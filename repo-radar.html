@@ -61,70 +61,115 @@
       font-weight: 500;
       cursor: pointer;
     }
-    .btn-primary { background: #3E7C8C; color: #fff; }
-    .btn-add { background: #2F6F4F; color: #fff; }
-    .btn-secondary { background: transparent; color: #1B1F1C; border: 1px solid #B7BCAC; }
+    .btn-primary { background: #1B1F1C; color: #fff; }
+    .btn-add { background: #4A5D47; color: #fff; }
+    .btn-secondary { background: #C9CDBF; color: #1B1F1C; }
     .btn-token { background: transparent; color: #5A6459; border: 1px solid transparent; padding: 10px 14px; font-size: 13px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; margin-top: 16px; }
-    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-    .stat-label { font-size: 11px; color: #6B7A8F; margin-bottom: 2px; }
-    .stat-value { font-size: 18px; font-weight: 600; }
-    .error { margin-top: 8px; font-size: 13px; color: #C1622D; display: flex; gap: 6px; align-items: center; }
-    .empty-state {
-      background: #F7F8F4;
-      border: 1px dashed #B7BCAC;
-      padding: 48px;
-      text-align: center;
-      color: #6B7A8F;
+    .btn-token:hover { border-color: #C9CDBF; }
+    .section-title { font-size: 13px; font-weight: 600; margin-bottom: 10px; color: #5A6459; text-transform: uppercase; letter-spacing: 0.05em; }
+    .token-section { margin-top: 12px; }
+    .token-hint { font-size: 12px; color: #5A6459; margin-top: 8px; }
+    .error { 
+      display: none; 
+      padding: 10px; 
+      background: #FDECEA; 
+      color: #991B1B; 
+      border: 1px solid #F87171;
+      font-size: 13px;
+      margin-top: 8px;
     }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; margin-top: 16px; }
+    .empty-state {
+      text-align: center;
+      padding: 48px 24px;
+      color: #5A6459;
+      font-size: 14px;
+      display: block;
+    }
+    .repo-name { font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+    .description { font-size: 13px; color: #5A6459; margin-bottom: 12px; min-height: 36px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 12px; }
+    .stat-label { font-size: 11px; color: #5A6459; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+    .stat-value { font-family: 'IBM Plex Mono', monospace; font-size: 16px; font-weight: 600; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { 
+      font-size: 11px; 
+      padding: 4px 8px; 
+      background: #EDEFEA; 
+      border: 1px solid #C9CDBF;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .loading { color: #5A6459; font-size: 13px; padding: 24px 0; text-align: center; }
     .remove-btn {
       position: absolute;
-      top: 8px;
-      right: 8px;
+      top: 12px;
+      right: 12px;
       background: transparent;
-      border: none;
+      border: 1px solid #C9CDBF;
+      color: #5A6459;
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
       cursor: pointer;
-      color: #6B7A8F;
-      padding: 4px;
+    }
+    .remove-btn:hover { background: #FDECEA; border-color: #F87171; color: #991B1B; }
+
+    /* Dashboard styles */
+    .dashboard {
+      background: #fff;
+      border: 2px solid #1B1F1C;
+      padding: 24px;
+      margin-bottom: 24px;
+      display: none;
+    }
+    .dashboard.visible {
+      display: block;
+    }
+    .dashboard-title {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #1B1F1C;
     }
-    .repo-name {
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+    }
+    .dashboard-stat {
+      text-align: center;
+    }
+    .dashboard-stat-value {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 15px;
+      font-size: 32px;
       font-weight: 600;
-      margin-bottom: 6px;
+      color: #1B1F1C;
+      margin-bottom: 4px;
     }
-    .description {
+    .dashboard-stat-label {
       font-size: 13px;
       color: #5A6459;
-      margin-bottom: 12px;
-      line-height: 1.4;
-    }
-    .section-title {
-      margin-bottom: 8px;
-      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       font-weight: 500;
-      color: #5A6459;
     }
-    .token-section {
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid #DADFCF;
+    .divider {
+      height: 1px;
+      background: #C9CDBF;
+      margin: 24px 0;
     }
-    .token-hint {
-      font-size: 12px;
-      color: #6B7A8F;
-      margin: 6px 0 0;
-    }
-    .loading { color: #6B7A8F; font-size: 13px; }
   </style>
 </head>
 <body>
   <div class="container">
-    <header style="margin-bottom: 28px;">
-      <h1>Repo Radar</h1>
-      <p class="subtitle">Pull live GitHub stats for any repositories and line them up side by side.</p>
-    </header>
+    <h1>Repo Radar</h1>
+    <p class="subtitle">Pull live GitHub stats for any repositories and line them up side by side.</p>
+    <br>
 
     <!-- Load all public repos -->
     <div class="card">
@@ -133,7 +178,7 @@
         <input 
           type="text" 
           id="userInput" 
-          placeholder="GitHub username, e.g. facebook"
+          placeholder="GitHub username or org, e.g. facebook"
         />
         <button class="btn-primary" onclick="loadAllRepos()">
           👥 Load All
@@ -166,11 +211,43 @@
         <input 
           type="password" 
           id="tokenInput" 
-          placeholder="Personal access token (optional, kept in-memory only)"
+          placeholder="Personal access token (optional, stored in localStorage)"
           style="width: 100%;"
         />
         <p class="token-hint">Unauthenticated requests are limited to 60/hour. With a token you get 5000/hour.</p>
       </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="dashboard">
+      <div class="dashboard-title">📊 Overview — All Repositories</div>
+      <div class="dashboard-grid">
+        <div class="dashboard-stat">
+          <div class="dashboard-stat-value" id="totalRepos">0</div>
+          <div class="dashboard-stat-label">Repositories</div>
+        </div>
+        <div class="dashboard-stat">
+          <div class="dashboard-stat-value" id="totalStars">0</div>
+          <div class="dashboard-stat-label">Total Stars</div>
+        </div>
+        <div class="dashboard-stat">
+          <div class="dashboard-stat-value" id="totalForks">0</div>
+          <div class="dashboard-stat-label">Total Forks</div>
+        </div>
+        <div class="dashboard-stat">
+          <div class="dashboard-stat-value" id="totalIssues">0</div>
+          <div class="dashboard-stat-label">Open Issues</div>
+        </div>
+        <div class="dashboard-stat">
+          <div class="dashboard-stat-value" id="topLanguage">—</div>
+          <div class="dashboard-stat-label">Top Language</div>
+        </div>
+        <div class="dashboard-stat">
+          <div class="dashboard-stat-value" id="avgStars">0</div>
+          <div class="dashboard-stat-label">Avg Stars</div>
+        </div>
+      </div>
+      <div class="divider"></div>
     </div>
 
     <!-- Repos grid -->
@@ -189,7 +266,13 @@
     let loadingKeys = {};
 
     function getToken() {
-      return document.getElementById('tokenInput').value.trim();
+      const stored = localStorage.getItem('gh_token');
+      const input = document.getElementById('tokenInput').value.trim();
+      if (input) {
+        localStorage.setItem('gh_token', input);
+        return input;
+      }
+      return stored || '';
     }
 
     function authHeaders() {
@@ -199,11 +282,8 @@
         : { 'Accept': 'application/vnd.github+json' };
     }
 
-    async function fetchJson(url, token) {
-      const headers = token 
-        ? { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' }
-        : { 'Accept': 'application/vnd.github+json' };
-      const res = await fetch(url, { headers: headers });
+    async function fetchJson(url) {
+      const res = await fetch(url, { headers: authHeaders() });
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
         throw new Error(body.message || `${res.status} ${res.statusText}`);
@@ -222,13 +302,9 @@
 
     function parseUsernameInput(raw) {
       let s = raw.trim();
-      // Remove GitHub URL if present
       s = s.replace(/^https?:\/\/(www\.)?github\.com\//i, "");
-      // Remove orgs/ prefix if present
       s = s.replace(/^orgs\//i, "");
-      // Remove trailing slashes and .git
       s = s.replace(/\.git$/i, "").replace(/\/+$/, "");
-      // Take only the first part (username/org)
       const parts = s.split("/").filter(Boolean);
       return parts[0] || null;
     }
@@ -250,6 +326,8 @@
       if (section.style.display === 'none') {
         section.style.display = 'block';
         arrow.textContent = '▲';
+        const stored = localStorage.getItem('gh_token');
+        if (stored) document.getElementById('tokenInput').value = stored;
       } else {
         section.style.display = 'none';
         arrow.textContent = '▼';
@@ -263,192 +341,123 @@
       setTimeout(() => { el.style.display = 'none'; }, 5000);
     }
 
-    async function loadRepo(key, owner, repo, tok) {
+    async function loadRepo(key, owner, repo) {
       loadingKeys[key] = true;
       renderRepos();
 
       try {
-        const base = await fetchJson(`${GH}/repos/${owner}/${repo}`, tok);
+        const base = await fetchJson(`${GH}/repos/${owner}/${repo}`);
 
         let languages = {};
+        let languageStats = [];
         try {
-          languages = await fetchJson(`${GH}/repos/${owner}/${repo}/languages`, tok);
-        } catch (e) {}
+          languages = await fetchJson(`${GH}/repos/${owner}/${repo}/languages`);
+          const total = Object.values(languages).reduce((sum, val) => sum + val, 0);
+          languageStats = Object.entries(languages)
+            .map(([lang, bytes]) => ({ lang, percent: ((bytes / total) * 100).toFixed(1) }))
+            .sort((a, b) => parseFloat(b.percent) - parseFloat(a.percent))
+            .slice(0, 4);
+        } catch {}
 
-        const total = Object.values(languages).reduce((a, b) => a + b, 0) || 1;
-        const topLangs = Object.entries(languages)
-          .map(([name, bytes]) => ({ name, pct: (bytes / total) * 100 }))
-          .sort((a, b) => b.pct - a.pct)
-          .slice(0, 4);
+        const primaryLang = languageStats[0]?.lang || null;
 
-        // Try to fetch traffic data (requires push access or token with proper permissions)
-        let clones = null;
+        // Try to get traffic data (requires auth and repo permissions)
         let views = null;
+        let clones = null;
         try {
-          const clonesData = await fetchJson(`${GH}/repos/${owner}/${repo}/traffic/clones`, tok);
-          clones = {
-            count: clonesData.count || 0,
-            uniques: clonesData.uniques || 0
-          };
-        } catch (e) {}
+          const traffic = await fetchJson(`${GH}/repos/${owner}/${repo}/traffic/views`);
+          views = { count: traffic.count, uniques: traffic.uniques };
+        } catch {}
 
         try {
-          const viewsData = await fetchJson(`${GH}/repos/${owner}/${repo}/traffic/views`, tok);
-          views = {
-            count: viewsData.count || 0,
-            uniques: viewsData.uniques || 0
-          };
-        } catch (e) {}
+          const cloneData = await fetchJson(`${GH}/repos/${owner}/${repo}/traffic/clones`);
+          clones = { count: cloneData.count, uniques: cloneData.uniques };
+        } catch {}
 
-        // Fetch commit activity (last year)
-        let commitActivity = null;
+        // Get commit count for the past year
+        let commitCount = 0;
         try {
-          const commits = await fetchJson(`${GH}/repos/${owner}/${repo}/stats/participation`, tok);
-          if (commits && commits.all) {
-            const total = commits.all.reduce((a, b) => a + b, 0);
-            commitActivity = {
-              total: total,
-              lastWeek: commits.all[commits.all.length - 1] || 0
-            };
-          }
-        } catch (e) {}
-
-        // Fetch recent forks
-        let recentForks = 0;
-        try {
-          const forks = await fetchJson(`${GH}/repos/${owner}/${repo}/forks?sort=newest&per_page=100`, tok);
-          if (Array.isArray(forks)) {
-            const twoWeeksAgo = Date.now() - (14 * 24 * 60 * 60 * 1000);
-            recentForks = forks.filter(f => new Date(f.created_at).getTime() > twoWeeksAgo).length;
-          }
-        } catch (e) {}
+          const since = new Date();
+          since.setFullYear(since.getFullYear() - 1);
+          const commits = await fetchJson(`${GH}/repos/${owner}/${repo}/commits?since=${since.toISOString()}&per_page=100`);
+          commitCount = commits.length;
+        } catch {}
 
         repoData[key] = {
-          owner,
-          repo,
-          name: base.full_name || key,
           description: base.description || "No description",
           stars: base.stargazers_count,
           forks: base.forks_count,
-          watchers: base.subscribers_count,
-          openIssues: base.open_issues_count,
-          languages: topLangs,
-          sizeKb: base.size,
-          pushedAt: base.pushed_at,
-          clones: clones,
+          issues: base.open_issues_count,
+          pushed: base.pushed_at,
+          size: base.size,
+          updated: base.updated_at,
+          language: primaryLang,
+          languageStats: languageStats,
+          topics: base.topics || [],
           views: views,
-          commitActivity: commitActivity,
-          recentForks: recentForks
+          clones: clones,
+          commits: commitCount
         };
-      } catch (e) {
-        repoData[key] = { error: e.message || "Failed to load" };
+      } catch (err) {
+        repoData[key] = { error: err.message };
       } finally {
-        loadingKeys[key] = false;
+        delete loadingKeys[key];
         renderRepos();
-      }
-    }
-
-    async function addRepo() {
-      const input = document.getElementById('repoInput');
-      const parsed = parseRepoInput(input.value);
-
-      if (!parsed) {
-        showError('repoError', 'Enter as owner/repo or a github.com URL');
-        return;
-      }
-
-      if (repos.some(r => r.key === parsed.key)) {
-        input.value = '';
-        return;
-      }
-
-      repos.push(parsed);
-      input.value = '';
-      await loadRepo(parsed.key, parsed.owner, parsed.repo, getToken());
-      document.getElementById('refreshBtn').style.display = 'flex';
-    }
-
-    async function loadAllRepos() {
-      const input = document.getElementById('userInput');
-      const username = parseUsernameInput(input.value);
-
-      if (!username) {
-        showError('userError', 'Enter a GitHub username or URL');
-        return;
-      }
-
-      const btn = event.target;
-      btn.disabled = true;
-      btn.textContent = '⏳ Loading...';
-
-      try {
-        let page = 1;
-        let allRepos = [];
-        let hasMore = true;
-
-        while (hasMore) {
-          const fetchedRepos = await fetchJson(`${GH}/users/${username}/repos?type=public&per_page=100&page=${page}`);
-          if (!Array.isArray(fetchedRepos) || fetchedRepos.length === 0) {
-            hasMore = false;
-          } else {
-            allRepos = allRepos.concat(fetchedRepos);
-            page++;
-            if (fetchedRepos.length < 100) hasMore = false;
-          }
-        }
-
-        const newRepos = allRepos
-          .map(r => ({
-            owner: r.owner.login,
-            repo: r.name,
-            key: `${r.owner.login}/${r.name}`
-          }))
-          .filter(r => !repos.some(existing => existing.key === r.key));
-
-        repos = [...repos, ...newRepos];
-        renderRepos();
-
-        for (const r of newRepos) {
-          await loadRepo(r.key, r.owner, r.repo, getToken());
-        }
-
-        input.value = '';
-        document.getElementById('refreshBtn').style.display = 'flex';
-      } catch (e) {
-        showError('userError', e.message || 'Failed to load user repos');
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = '👥 Load All';
-      }
-    }
-
-    function removeRepo(key) {
-      repos = repos.filter(r => r.key !== key);
-      delete repoData[key];
-      delete loadingKeys[key];
-      renderRepos();
-      if (repos.length === 0) {
-        document.getElementById('refreshBtn').style.display = 'none';
-      }
-    }
-
-    async function refreshAll() {
-      for (const r of repos) {
-        await loadRepo(r.key, r.owner, r.repo, getToken());
       }
     }
 
     function renderRepos() {
       const grid = document.getElementById('reposGrid');
       const emptyState = document.getElementById('emptyState');
+      const dashboard = document.getElementById('dashboard');
 
       if (repos.length === 0) {
         grid.innerHTML = '';
         emptyState.style.display = 'block';
+        dashboard.classList.remove('visible');
         return;
       }
 
       emptyState.style.display = 'none';
+
+      // Calculate dashboard stats
+      let totalStars = 0;
+      let totalForks = 0;
+      let totalIssues = 0;
+      let validRepos = 0;
+      let languageCounts = {};
+
+      repos.forEach(r => {
+        const d = repoData[r.key];
+        if (d && !d.error && !loadingKeys[r.key]) {
+          validRepos++;
+          totalStars += d.stars || 0;
+          totalForks += d.forks || 0;
+          totalIssues += d.issues || 0;
+          if (d.language) {
+            languageCounts[d.language] = (languageCounts[d.language] || 0) + 1;
+          }
+        }
+      });
+
+      // Update dashboard
+      if (validRepos > 0) {
+        dashboard.classList.add('visible');
+        document.getElementById('totalRepos').textContent = validRepos;
+        document.getElementById('totalStars').textContent = formatCompact(totalStars);
+        document.getElementById('totalForks').textContent = formatCompact(totalForks);
+        document.getElementById('totalIssues').textContent = formatCompact(totalIssues);
+
+        const avgStars = Math.round(totalStars / validRepos);
+        document.getElementById('avgStars').textContent = formatCompact(avgStars);
+
+        // Find top language
+        const topLang = Object.entries(languageCounts)
+          .sort((a, b) => b[1] - a[1])[0];
+        document.getElementById('topLanguage').textContent = topLang ? topLang[0] : '—';
+      } else {
+        dashboard.classList.remove('visible');
+      }
 
       grid.innerHTML = repos.map(r => {
         const d = repoData[r.key];
@@ -484,6 +493,57 @@
           `;
         }
 
+        // Build language breakdown
+        const langSection = d.languageStats?.length > 0 
+          ? `<div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #EDEFEA;">
+               <div style="font-size: 11px; color: #5A6459; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; font-weight: 600;">Languages</div>
+               ${d.languageStats.map(ls => `<div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 2px;">
+                 <span style="color: #1B1F1C;">${ls.lang}</span>
+                 <span style="color: #5A6459; font-family: 'IBM Plex Mono', monospace;">${ls.percent}%</span>
+               </div>`).join('')}
+             </div>`
+          : '';
+
+        // Build traffic & activity section
+        const trafficSection = `
+          <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #EDEFEA;">
+            <div style="font-size: 11px; color: #5A6459; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; font-weight: 600;">Traffic & Activity</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 13px;">
+              ${d.views ? `
+                <div>
+                  <span style="color: #5A6459;">Views:</span> 
+                  <strong style="color: #1B1F1C;">${d.views.count}</strong>
+                  <span style="color: #5A6459;">(${d.views.uniques} uniq)</span>
+                </div>
+              ` : ''}
+              ${d.clones ? `
+                <div>
+                  <span style="color: #5A6459;">Clones:</span> 
+                  <strong style="color: #1B1F1C;">${d.clones.count}</strong>
+                  <span style="color: #5A6459;">(${d.clones.uniques} uniq)</span>
+                </div>
+              ` : ''}
+              ${d.commits ? `
+                <div>
+                  <span style="color: #5A6459;">Commits (yr):</span> 
+                  <strong style="color: #1B1F1C;">${d.commits}</strong>
+                </div>
+              ` : ''}
+              <div>
+                <span style="color: #5A6459;">New forks:</span> 
+                <strong style="color: #1B1F1C;">${d.forks}</strong>
+              </div>
+            </div>
+          </div>
+        `;
+
+        // Build size and update info
+        const metaInfo = `
+          <div style="margin-top: 8px; font-size: 12px; color: #5A6459;">
+            Updated ${daysAgo(d.updated)} days ago • ${Math.round(d.size)} KB
+          </div>
+        `;
+
         return `
           <div class="repo-card">
             <button class="remove-btn" onclick="removeRepo('${r.key}')">×</button>
@@ -500,76 +560,124 @@
               </div>
               <div>
                 <div class="stat-label">Issues</div>
-                <div class="stat-value">${formatCompact(d.openIssues)}</div>
+                <div class="stat-value">${formatCompact(d.issues)}</div>
               </div>
               <div>
-                <div class="stat-label">Watchers</div>
-                <div class="stat-value">${formatCompact(d.watchers)}</div>
+                <div class="stat-label">Last push</div>
+                <div class="stat-value">${daysAgo(d.pushed)}d ago</div>
               </div>
             </div>
-            ${d.languages.length > 0 ? `
-              <div style="margin-bottom: 10px;">
-                <div class="stat-label" style="margin-bottom: 4px;">Languages</div>
-                ${d.languages.map(lang => `
-                  <div style="font-size: 12px; display: flex; justify-content: space-between;">
-                    <span>${lang.name}</span>
-                    <span style="color: #6B7A8F;">${lang.pct.toFixed(1)}%</span>
-                  </div>
-                `).join('')}
-              </div>
-            ` : ''}
-            <div style="font-size: 11px; color: #6B7A8F; padding-top: 8px; border-top: 1px solid #EDEFEA;">
-              Updated ${daysAgo(d.pushedAt)} days ago • ${formatCompact(d.sizeKb)} KB
+            <div class="tags">
+              ${d.language ? `<span class="tag">${d.language}</span>` : ''}
+              ${d.topics.map(t => `<span class="tag">${t}</span>`).join('')}
             </div>
-            ${d.views || d.clones || d.commitActivity || d.recentForks ? `
-              <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #EDEFEA;">
-                <div class="stat-label" style="margin-bottom: 6px;">Traffic & Activity</div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px;">
-                  ${d.views ? `
-                    <div>
-                      <span style="color: #6B7A8F;">Views:</span> <strong>${formatCompact(d.views.count)}</strong>
-                      <span style="color: #8A6D3B; font-size: 11px;"> (${d.views.uniques} uniq)</span>
-                    </div>
-                  ` : ''}
-                  ${d.clones ? `
-                    <div>
-                      <span style="color: #6B7A8F;">Clones:</span> <strong>${formatCompact(d.clones.count)}</strong>
-                      <span style="color: #8A6D3B; font-size: 11px;"> (${d.clones.uniques} uniq)</span>
-                    </div>
-                  ` : ''}
-                  ${d.commitActivity ? `
-                    <div>
-                      <span style="color: #6B7A8F;">Commits (yr):</span> <strong>${formatCompact(d.commitActivity.total)}</strong>
-                    </div>
-                  ` : ''}
-                  ${d.recentForks > 0 ? `
-                    <div>
-                      <span style="color: #6B7A8F;">New forks:</span> <strong>${d.recentForks}</strong>
-                    </div>
-                  ` : ''}
-                </div>
-                ${!d.views && !d.clones ? `
-                  <div style="font-size: 11px; color: #8A6D3B; margin-top: 4px;">
-                    💡 Traffic data requires repo access token
-                  </div>
-                ` : ''}
-              </div>
-            ` : ''}
+            ${langSection}
+            ${trafficSection}
+            ${metaInfo}
           </div>
         `;
       }).join('');
     }
 
-    // Enable Enter key for inputs
-    document.getElementById('repoInput').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') addRepo();
-    });
-    document.getElementById('userInput').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') loadAllRepos();
-    });
+    function removeRepo(key) {
+      repos = repos.filter(r => r.key !== key);
+      delete repoData[key];
+      delete loadingKeys[key];
+      saveState();
+      renderRepos();
+      if (repos.length === 0) {
+        document.getElementById('refreshBtn').style.display = 'none';
+      }
+    }
 
-    // Initial render
-    renderRepos();
+    function addRepo() {
+      const input = document.getElementById('repoInput');
+      const parsed = parseRepoInput(input.value);
+
+      if (!parsed) {
+        showError('repoError', 'Invalid format. Use: owner/repo');
+        return;
+      }
+
+      if (repos.some(r => r.key === parsed.key)) {
+        showError('repoError', 'Already added');
+        return;
+      }
+
+      repos.push(parsed);
+      input.value = '';
+      document.getElementById('refreshBtn').style.display = 'flex';
+      saveState();
+      renderRepos();
+      loadRepo(parsed.key, parsed.owner, parsed.repo);
+    }
+
+    async function loadAllRepos() {
+      const input = document.getElementById('userInput');
+      const username = parseUsernameInput(input.value);
+
+      if (!username) {
+        showError('userError', 'Enter a valid GitHub username');
+        return;
+      }
+
+      try {
+        const userRepos = await fetchJson(`${GH}/users/${username}/repos?per_page=100&sort=updated`);
+
+        if (userRepos.length === 0) {
+          showError('userError', 'No public repos found');
+          return;
+        }
+
+        userRepos.forEach(r => {
+          const key = `${r.owner.login}/${r.name}`;
+          if (!repos.some(existing => existing.key === key)) {
+            repos.push({ owner: r.owner.login, repo: r.name, key });
+          }
+        });
+
+        input.value = '';
+        document.getElementById('refreshBtn').style.display = 'flex';
+        saveState();
+        renderRepos();
+
+        repos.forEach(r => {
+          if (!repoData[r.key] && !loadingKeys[r.key]) {
+            loadRepo(r.key, r.owner, r.repo);
+          }
+        });
+      } catch (err) {
+        showError('userError', err.message);
+      }
+    }
+
+    function refreshAll() {
+      repoData = {};
+      loadingKeys = {};
+      renderRepos();
+      repos.forEach(r => loadRepo(r.key, r.owner, r.repo));
+    }
+
+    function saveState() {
+      localStorage.setItem('repos', JSON.stringify(repos));
+    }
+
+    function loadState() {
+      const stored = localStorage.getItem('repos');
+      if (stored) {
+        try {
+          repos = JSON.parse(stored);
+          if (repos.length > 0) {
+            document.getElementById('refreshBtn').style.display = 'flex';
+            renderRepos();
+            repos.forEach(r => loadRepo(r.key, r.owner, r.repo));
+          }
+        } catch {}
+      }
+    }
+
+    // Load saved state on page load
+    loadState();
   </script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"357e19c0dcf54318929d8ae6dd5f45c0","spa":2}' crossorigin="anonymous"></script>
 </body>
