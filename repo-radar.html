@@ -219,6 +219,21 @@
     </div>
 
     <!-- Dashboard -->
+        <!-- Timeframe Filter -->
+    <div class="card" id="filterCard" style="display: none;">
+      <div class="section-title">Timeframe</div>
+      <div class="input-row">
+        <select id="timeframeFilter" onchange="applyTimeframeFilter()" style="flex: 0 1 200px; padding: 10px 12px; font-size: 14px; border: 1px solid #B7BCAC; background: #fff; color: #1B1F1C; font-family: 'IBM Plex Mono', monospace; cursor: pointer;">
+          <option value="all">All Time</option>
+          <option value="30">Last 30 Days</option>
+          <option value="90">Last 90 Days</option>
+          <option value="180">Last 6 Months</option>
+          <option value="365">Last Year</option>
+        </select>
+        <span style="font-size: 13px; color: #5A6459; margin-left: 8px;">Filter repos and stats by last push date</span>
+      </div>
+    </div>
+
     <div id="dashboard" class="dashboard">
       <div class="dashboard-title">📊 Overview — All Repositories</div>
       <div class="dashboard-grid">
@@ -245,7 +260,12 @@
         <div class="dashboard-stat">
           <div class="dashboard-stat-value" id="avgStars">0</div>
           <div class="dashboard-stat-label">Avg Stars</div>
+        
+        <div class="dashboard-stat">
+          <div class="dashboard-stat-value" id="totalTraffic">0</div>
+          <div class="dashboard-stat-label">Total Traffic</div>
         </div>
+      </div>
       </div>
       <div class="divider"></div>
     </div>
@@ -321,8 +341,10 @@
     }
 
     function toggleToken() {
+      console.log('toggleToken called!');
       const section = document.getElementById('tokenSection');
       const arrow = document.getElementById('tokenArrow');
+      console.log('section:', section, 'arrow:', arrow);
       if (section.style.display === 'none') {
         section.style.display = 'block';
         arrow.textContent = '▲';
@@ -424,16 +446,37 @@
       let totalStars = 0;
       let totalForks = 0;
       let totalIssues = 0;
+      let totalTraffic = 0;
       let validRepos = 0;
       let languageCounts = {};
+
+      // Get selected timeframe
+      const filterSelect = document.getElementById('timeframeFilter');
+      const timeframeDays = filterSelect ? parseInt(filterSelect.value) : null;
+      const cutoffDate = timeframeDays && timeframeDays !== 'all' 
+        ? new Date(Date.now() - (timeframeDays * 24 * 60 * 60 * 1000)) 
+        : null;
 
       repos.forEach(r => {
         const d = repoData[r.key];
         if (d && !d.error && !loadingKeys[r.key]) {
+          // Apply timeframe filter based on last push
+          if (cutoffDate && d.pushed) {
+            const pushDate = new Date(d.pushed);
+            if (pushDate < cutoffDate) {
+              return; // Skip repos not updated within timeframe
+            }
+          }
+
           validRepos++;
           totalStars += d.stars || 0;
           totalForks += d.forks || 0;
           totalIssues += d.issues || 0;
+
+          // Sum up traffic (views + clones)
+          if (d.views) totalTraffic += d.views.count || 0;
+          if (d.clones) totalTraffic += d.clones.count || 0;
+
           if (d.language) {
             languageCounts[d.language] = (languageCounts[d.language] || 0) + 1;
           }
@@ -441,12 +484,17 @@
       });
 
       // Update dashboard
+      const filterCard = document.getElementById('filterCard');
+
       if (validRepos > 0) {
         dashboard.classList.add('visible');
+        filterCard.style.display = 'block';
+
         document.getElementById('totalRepos').textContent = validRepos;
         document.getElementById('totalStars').textContent = formatCompact(totalStars);
         document.getElementById('totalForks').textContent = formatCompact(totalForks);
         document.getElementById('totalIssues').textContent = formatCompact(totalIssues);
+        document.getElementById('totalTraffic').textContent = formatCompact(totalTraffic);
 
         const avgStars = Math.round(totalStars / validRepos);
         document.getElementById('avgStars').textContent = formatCompact(avgStars);
@@ -457,9 +505,25 @@
         document.getElementById('topLanguage').textContent = topLang ? topLang[0] : '—';
       } else {
         dashboard.classList.remove('visible');
+        filterCard.style.display = 'none';
       }
 
-      grid.innerHTML = repos.map(r => {
+      grid.innerHTML = repos
+        .filter(r => {
+          const d = repoData[r.key];
+          if (!d || d.error || loadingKeys[r.key]) return true; // Always show loading/error states
+
+          // Apply timeframe filter
+          const filterSelect = document.getElementById('timeframeFilter');
+          const timeframeDays = filterSelect ? parseInt(filterSelect.value) : null;
+          if (timeframeDays && timeframeDays !== 'all' && d.pushed) {
+            const cutoffDate = new Date(Date.now() - (timeframeDays * 24 * 60 * 60 * 1000));
+            const pushDate = new Date(d.pushed);
+            return pushDate >= cutoffDate;
+          }
+          return true;
+        })
+        .map(r => {
         const d = repoData[r.key];
         const loading = loadingKeys[r.key];
 
@@ -674,6 +738,11 @@
           }
         } catch {}
       }
+    }
+
+    
+    function applyTimeframeFilter() {
+      renderRepos();
     }
 
     // Load saved state on page load
